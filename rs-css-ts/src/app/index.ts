@@ -8,9 +8,9 @@ function init() {
   heading.textContent = 'RS CSS';
 
   const img = document.createElement('img');
-  img.setAttribute('src', './assets/images/logo_192x192.png');
+  img.src = './assets/images/logo_192x192.png';
 
-  const root = document.getElementById('root');
+  const root = document.querySelector('#root');
   root?.append(heading, p, img);
 }
 init();
