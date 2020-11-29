@@ -1,1 +1,15 @@
-// Your code
+function init() {
+  const p = document.createElement('p');
+  p.textContent = `The simulator consists of several game levels. Each level includes an example of
+                  layout and html-code that corresponds to the current level. Your task is to write
+                  a css selector that corresponds to all selected layout elements`;
+
+  const heading = document.createElement('h1');
+  heading.textContent = 'RS CSS';
+
+  const root = document.getElementById('root');
+  root?.append(heading, p);
+}
+init();
+
+// document.addEventListener('DOMContentLoaded', init());
