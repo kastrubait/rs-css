@@ -1,0 +1,16 @@
+// Your styles
+@font-face {
+  font-family: 'Hide-TideRegular';
+  src: url('assets/fonts/Hide-TideRegular/High-TideRegular.eot');
+   src: url('assets/fonts/Hide-TideRegular/High-TideRegular.eot?iefix') format('eot'),
+   url('assets/fonts/Hide-TideRegular/High-TideRegular.woff') format('woff'),
+   url('assets/fonts/Hide-TideRegular/High-TideRegular.ttf') format('truetype'),
+   url('assets/fonts/Hide-TideRegular/High-TideRegular.svg') format('svg');
+   font-weight: normal;
+   font-style: normal;
+}
+
+h1 {
+  color: red;
+  font-family: Hide-TideRegular;
+}
