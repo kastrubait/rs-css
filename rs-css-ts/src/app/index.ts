@@ -7,8 +7,11 @@ function init() {
   const heading = document.createElement('h1');
   heading.textContent = 'RS CSS';
 
+  const img = document.createElement('img');
+  img.setAttribute('src', './assets/images/logo_192x192.png');
+
   const root = document.getElementById('root');
-  root?.append(heading, p);
+  root?.append(heading, p, img);
 }
 init();
 
