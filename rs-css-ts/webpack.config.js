@@ -12,6 +12,9 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].bundle.js',
   },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+  },
   mode: 'development',
   devServer: {
     historyApiFallback: true,
@@ -45,12 +48,10 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
         use: ['babel-loader'],
       },
       {
         test: /\.tsx?$/,
-        exclude: /node_modules/,
         use: ['ts-loader'],
       },
       {
@@ -59,7 +60,7 @@ module.exports = {
       },
       {
         test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-        type: 'asset/fonts',
+        type: 'asset/inline',
       },
       {
         test: /\.(scss|css)$/,
