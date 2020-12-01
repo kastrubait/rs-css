@@ -1,0 +1,44 @@
+@import '../theme/colors.scss';
+
+header {
+  display: flex;
+  width: 100%;
+  height: 90px;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary-grey;
+  color: $secondary-black;
+}
+
+.header-content {
+  display: flex;
+  width: 95%;
+  justify-content: space-between;
+  align-items: center;
+
+  &_logo {
+    min-width: 180px;
+    margin-left: 100px;
+    color: $secondary-blue;
+    font-family: Hide-TideRegular;
+    font-weight: bold;
+    font-size: 60px;
+    text-shadow: 1px 2px 2px $secondary-black;
+    vertical-align: text-top;
+  }
+
+  &_description {
+    font-size: 20px;
+    vertical-align: text-top;
+  }
+}
+
+span.header-content_logo:first-child {
+  letter-spacing: 7px;
+}
+
+span.header-content_logo:last-child {
+  font-size: 50px;
+  text-decoration-line: underline;
+  text-decoration-style: double;
+}

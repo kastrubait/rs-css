@@ -1,10 +1,86 @@
-@import './theme/colors.scss';
-// @import './theme/fonts.scss';
+@import '../src/styles/base/base.scss';
+@import '../src//styles//layout/header.scss';
+@import '../src/styles/layout/footer.scss';
+@import '../src/styles/components/btnLevel.scss';
 
-$font-size: 2rem;
 
-p {
-  font-size: $font-size;
-  color: $primary-pink;
-  font-family: Hide-TideRegular;
+@font-face {
+  font-family: 'Hide-TideRegular';
+  src: url('./assets/inline/Hide-TideRegular/High-TideRegular.eot');
+   src: url('./assets/inline/Hide-TideRegular/High-TideRegular.eot?iefix') format('eot'),
+   url('./assets/inline/Hide-TideRegular/High-TideRegular.woff') format('woff'),
+   url('./assets/inline/Hide-TideRegular/High-TideRegular.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Roboto-Light';
+  src: url('./assets/inline/Roboto-Light/Roboto-Light.eot');
+  src: url('./assets/inline/Roboto-Light/Roboto-Light.eot?iefix') format('eot'),
+  url('./assets/inline/Roboto-Light/Roboto-Light.woff') format('woff'),
+  url('./assets/inline/Roboto-Light/Roboto-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.editor-html {
+  display: flex;
+  align-items: top;
+  justify-content: space-between;
+}
+
+.editor-html_line-number {
+  display: inline-block;
+  width: 2em;
+  background-color: rgb(158, 156, 156);
+}
+
+.editor-html_line-number > div {
+  padding-right: 0.5em;
+  text-align: right;
+  color: rgb(245, 245, 245);
+}
+
+.editor-html_code {
+  display: inline-block;
+  width: 25em;
+  height: 100px;
+  background-color:$primary-white;
+}
+
+#root {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+/* gameField  */
+.content_editor-block{
+  border: 1px solid $primary-grey;
+}
+
+/*  editors  */
+.content_editor-block{
+  border: 1px solid $primary-grey;
+
+}
+
+
+/*  LevelBlock   */
+.content_level-block {
+  width: 30%;
+  width: 350px;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary-grey;
+  color: $secondary-black;
+}
+
+.level-content_lelev-item {
+  padding-left: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 40px;
+}
+
