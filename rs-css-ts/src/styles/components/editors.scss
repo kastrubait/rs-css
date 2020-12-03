@@ -1,0 +1,81 @@
+@import '../theme/colors.scss';
+
+.editor-css,
+.editor-html {
+  position: relative;
+  padding: 10px 10px 10px 40px;
+  margin-bottom: 30px;
+  background-color: $bg-color;
+  border-radius: 4px;
+  box-shadow: 0 0 7px 2px $secondary-blue-fade;
+  overflow: hidden;
+  z-index: 1;
+
+  .line-numbers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    padding: 10px 6px;
+    line-height: 24px;
+    text-align: right;
+    background-color: $secondary-grey;
+    color: $bg-color;
+  }
+}
+
+.editor-html {
+  height: calc(100vh - 480px);;
+  margin-bottom: 130px;
+  overflow-y: auto;
+}
+
+.editor-css {
+  height: 200px;
+}
+
+.editor-title {
+  display: flex;
+  height: 30px;
+  padding: 0 10px 0 10px;
+  justify-content: space-between;
+  background-color: $primary-grey;
+  font-size: 20px;
+}
+
+#code {
+  display: block;
+  width: calc(100% - 24px);
+  height: 28px;
+  margin-left: 4px;
+  border: none;
+  font-size: 18px;
+  outline: none;
+  resize: none;
+  overflow: auto;
+}
+
+#check.disabled {
+  opacity: 0.5;
+}
+
+#check {
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+  padding-top: 0.3em;
+}
+
+button {
+  display: inline-block;
+  padding: 0.4em 0.8em;
+  background-color:$primary-pink;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 24px;
+  color: $bg-color;
+  cursor: pointer;
+  appearance: none;
+}

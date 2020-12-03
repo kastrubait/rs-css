@@ -1,4 +1,5 @@
-import { btnLevel, contentLogo, contentFooter, itemLevel } from './layout';
+import { btnLevel, contentLogo, contentFooter, itemLevel, editorHtml, editorCss } from './layout';
+import { check } from './utils';
 import { CSS_TRAINING_DATA } from './data-css';
 
 function init(): void {
@@ -17,9 +18,12 @@ function init(): void {
   const { tasks } = CSS_TRAINING_DATA;
   for (let i = 0; i < tasks.length; i += 1) {
     const item = document.createElement('li');
+    // <div data-item="${item + 1}"  class="level__item">
     const { notation } = tasks[i];
-    // const item = navLevel.childNodes[i];
     item.innerHTML = itemLevel(i, notation);
+    item.setAttribute('data-item', `${i + 1}`);
+    item.setAttribute('data-check', 'false');
+    item.classList.add('level__item');
     navLevel.append(item);
   }
 
@@ -28,6 +32,15 @@ function init(): void {
 
   const fieldEditor = document.createElement('div');
   fieldEditor.classList.add('content_editor-block');
+
+  const html = document.createElement('div');
+  html.classList.add('content_editor-block__html');
+  html.innerHTML = editorHtml();
+
+  const css = document.createElement('div');
+  css.classList.add('content_editor-block__css');
+  css.innerHTML = editorCss();
+  fieldEditor.append(css, html);
 
   const footer = document.createElement('footer');
   footer.innerHTML = contentFooter();
@@ -42,4 +55,11 @@ function init(): void {
 
 init();
 
-// document.addEventListener('DOMContentLoaded', init());
+window.addEventListener(
+  'input',
+  function (e) {
+    const code = e.target as HTMLInputElement;
+    check(1, code.value);
+  },
+  false,
+);
