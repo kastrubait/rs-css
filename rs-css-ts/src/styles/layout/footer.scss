@@ -9,14 +9,20 @@ footer {
   background-color: $secondary-blue;
   color: $primary-white;
   img {
-    height: 65px;
+    height: 55px;
     padding-left: 20px;
     padding-right: 20px;
+    @media (max-width: 600px) {
+      height: 40px;
+    }
   }
   img:hover {
-    height: 70px;
+    height: 60px;
     padding-left: 20px;
     padding-right: 20px;
+    @media (max-width: 600px) {
+      height: 45px;
+    }
   }
 }
 

@@ -2,6 +2,7 @@
 @import '../src//styles//layout/header.scss';
 @import '../src/styles/layout/footer.scss';
 @import '../src/styles/components/btnLevel.scss';
+@import '../src/styles/components/editors.scss';
 
 
 @font-face {
@@ -24,63 +25,46 @@
   font-style: normal;
 }
 
-.editor-html {
-  display: flex;
-  align-items: top;
-  justify-content: space-between;
-}
-
-.editor-html_line-number {
-  display: inline-block;
-  width: 2em;
-  background-color: rgb(158, 156, 156);
-}
-
-.editor-html_line-number > div {
-  padding-right: 0.5em;
-  text-align: right;
-  color: rgb(245, 245, 245);
-}
-
-.editor-html_code {
-  display: inline-block;
-  width: 25em;
-  height: 100px;
-  background-color:$primary-white;
-}
-
 #root {
 	display: flex;
 	flex-direction: column;
-	min-height: 100%;
+	min-height: calc(100vh -150px);
 }
 
-/* gameField  */
-.content_editor-block{
-  border: 1px solid $primary-grey;
+content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding-right: 20px;
+  z-index: 1;
 }
-
-/*  editors  */
-.content_editor-block{
-  border: 1px solid $primary-grey;
-
-}
-
 
 /*  LevelBlock   */
 .content_level-block {
-  width: 30%;
-  width: 350px;
+  display: inline-block;
+  width: 25%;
+  min-width: 350px;
+  height: 100%;
+  max-height: calc(100vh - 150px);
+  padding-left: 10px;
   justify-content: center;
   align-items: center;
   background-color: $primary-grey;
   color: $secondary-black;
+  box-shadow:  -20px 0 20px -20px $secondary-grey inset;
 }
 
-.level-content_lelev-item {
-  padding-left: 20px;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 40px;
+/*  editors  */
+.content_editor-block{
+  display: inline-block;
+  width: 25%;
+  min-width: 350px;
+  height: 100%;
+  max-height: calc(100vh - 150px);
+  padding-top: 30px;
+  border-left: 30px solid $primary-grey;
+  border-right: 30px solid $primary-grey;
+  background-color: $primary-grey;
 }
 
