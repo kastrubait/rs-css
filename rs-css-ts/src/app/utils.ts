@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { CSS_TRAINING_DATA } from './data-css';
 
-function check(item: number, value: string): boolean {
+function checkAnswer(item: number, value: string): boolean {
   const { answer } = CSS_TRAINING_DATA.tasks[item - 1];
   const newValue = value.trim();
   if (newValue.includes('. ') && newValue.includes('# ')) {
@@ -16,4 +16,10 @@ function check(item: number, value: string): boolean {
   return value.trim() === answer;
 }
 
-export { check };
+function printHtmlCode(item: number): void {
+  const { exerciseView } = CSS_TRAINING_DATA.tasks[item - 1];
+  const code = document.querySelector('.editor-html_content');
+  code.innerHTML = exerciseView;
+}
+
+export { checkAnswer, printHtmlCode };

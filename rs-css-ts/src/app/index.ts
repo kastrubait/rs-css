@@ -1,5 +1,5 @@
 import { btnLevel, contentLogo, contentFooter, itemLevel, editorHtml, editorCss } from './layout';
-import { check } from './utils';
+import { checkAnswer, printHtmlCode } from './utils';
 import { CSS_TRAINING_DATA } from './data-css';
 
 function init(): void {
@@ -18,7 +18,6 @@ function init(): void {
   const { tasks } = CSS_TRAINING_DATA;
   for (let i = 0; i < tasks.length; i += 1) {
     const item = document.createElement('li');
-    // <div data-item="${item + 1}"  class="level__item">
     const { notation } = tasks[i];
     item.innerHTML = itemLevel(i, notation);
     item.setAttribute('data-item', `${i + 1}`);
@@ -57,9 +56,18 @@ init();
 
 window.addEventListener(
   'input',
-  function (e) {
+  function (e: Event): void {
     const code = e.target as HTMLInputElement;
-    check(1, code.value);
+    checkAnswer(1, code.value);
   },
   false,
+);
+
+const li = document.querySelectorAll('li');
+Array.from(li).forEach(element =>
+  element.addEventListener('click', function (): void {
+    const { item } = this.dataset;
+    // console.log(this);
+    printHtmlCode(parseInt(item, 10));
+  }),
 );
