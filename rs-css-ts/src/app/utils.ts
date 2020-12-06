@@ -31,6 +31,8 @@ function printAnswer(answer: string): void {
       }, 175 * i);
     })(i);
   }
+  const btnCheck = document.querySelector('#check');
+  btnCheck.classList.remove('disabled');
 }
 
 function printHtmlCode(item: number): void {
@@ -45,4 +47,4 @@ function showHtmlCode(item: number): void {
 
 // function chooseLevel(): void {}
 
-export { checkAnswer, printHtmlCode, showHtmlCode, getAnswer, printAnswer };
+export { checkAnswer, printHtmlCode, showHtmlCode, getAnswer, printAnswer, removeAllClassActive };

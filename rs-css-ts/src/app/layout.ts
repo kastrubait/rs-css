@@ -51,7 +51,7 @@ export function editorCss(): string {
     <input id="code" type="text" autocomplete="off"> <pre>{
   // some style
 }</pre>
-    <button id="check" class="translate disabled">Проверить</button>
+    <button id="check" class="disabled">Проверить</button>
   </div>`;
 }
 
