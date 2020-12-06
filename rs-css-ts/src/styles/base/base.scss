@@ -11,9 +11,10 @@
 }
 
 body {
-  width: 100%;
-  min-height: 100%;
+  width: 100vw;
+  min-height: 100vh;
   height: 100%;
+  align-items: center;
   margin: 0 auto;
   font-family: Roboto-Light;
 }
@@ -28,7 +29,89 @@ p {
   font-size: 24px;
 }
 
+code {
+  color: $secondary-blue;
+  background-color: $bg-color-fade;
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
 content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
+  max-width: 1280px;
+  z-index: 1;
+
+}
+
+#root {
+	display: flex;
+  flex-direction: column;
+  width: 1280px;
+  height: calc(100vh -150px);
+  margin: 0 auto;
+}
+
+/*  LevelBlock   */
+.content_level-block {
+  display: inline-block;
+  width: 120px;
+  height: calc(100vh - 150px);
+  position: relative;
+  padding-left: 10px;
+  background-color: $primary-grey;
+  color: $secondary-black;
+}
+
+/*  game  */
+.content_game-block{
+  display: inline-block;
+  width: 100%;
+  height: calc(100vh - 150px);
+  position: relative;
+  padding-top: 17px;
+  padding-left: 10px;
+  // background-image: src('../../assets/images/cloud_292.png');
+  background-color: $bg-color;
+}
+
+/*  editors  */
+.content_editor-block{
+  display: inline-block;
+  width: 30%;
+  min-width: 400px;
   height: 100%;
+  max-height: calc(100vh - 150px);
+  padding-top: 30px;
+  border-left: 30px solid $primary-grey;
+  border-right: 30px solid $primary-grey;
+  background-color: $primary-grey;
+}
+
+.title-level {
+  display: flex;
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+  color: $primary-pink;
+  writing-mode: tb-rl;
+  transform:rotate(180deg);
+  font-size: 28px;
+  font-weight: bold;
+  font-style: italic;
+  text-shadow: 2px 4px 3px rgba(255, 255, 255, 0.89);
+}
+
+@media screen and (max-width: 1280px) {
+  #root {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  #root {
+    width: 100%;
+  }
 }

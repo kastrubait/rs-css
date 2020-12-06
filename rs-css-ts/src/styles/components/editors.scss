@@ -27,6 +27,8 @@
 .editor-html {
   height: calc(100vh - 480px);;
   margin-bottom: 130px;
+  font-size: 18px;
+  line-height: 24px;
   overflow-y: auto;
 }
 
@@ -77,4 +79,8 @@ button {
   color: $bg-color;
   cursor: pointer;
   appearance: none;
+}
+
+pre {
+  font-size: 18px;
 }

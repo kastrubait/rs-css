@@ -22,4 +22,10 @@ function printHtmlCode(item: number): void {
   code.innerHTML = exerciseView;
 }
 
-export { checkAnswer, printHtmlCode };
+function showHtmlCode(item: number): void {
+  const { exerciseView } = CSS_TRAINING_DATA.tasks[item - 1];
+}
+
+// function chooseLevel(): void {}
+
+export { checkAnswer, printHtmlCode, showHtmlCode };
