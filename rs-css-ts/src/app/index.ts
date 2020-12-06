@@ -1,7 +1,7 @@
 import { IStateGame, IitemLevel } from './modeles';
 import { CSS_TRAINING_DATA } from './data-css';
 import { initPage } from './init';
-import { checkAnswer, printHtmlCode, showHtmlCode } from './utils';
+import { checkAnswer, printHtmlCode, showHtmlCode, getAnswer, printAnswer } from './utils';
 
 class SimulatorCss {
   public position: IStateGame;
@@ -30,10 +30,10 @@ if (localStorage.getItem('trainCss') !== null) {
     state,
     currLevel,
   };
-  console.log(newGame);
 }
 
 const stateGame = new SimulatorCss(newGame);
+const { currLevel } = stateGame.position;
 
 initPage(stateGame.position);
 
@@ -58,5 +58,6 @@ Array.from(li).forEach(element =>
 
 const help = document.querySelector('#help');
 help.addEventListener('click', function (): void {
-  console.log(help);
+  const correct = getAnswer(currLevel);
+  printAnswer(correct);
 });

@@ -16,6 +16,23 @@ function checkAnswer(item: number, value: string): boolean {
   return value.trim() === answer;
 }
 
+function getAnswer(item: number): string {
+  const { answer } = CSS_TRAINING_DATA.tasks[item - 1];
+  return answer;
+}
+
+function printAnswer(answer: string): void {
+  const code = document.querySelector('#code') as HTMLInputElement;
+  code.value = '';
+  for (let i = 0; i < answer.length; i += 1) {
+    (function (i) {
+      setTimeout(function () {
+        code.value += answer[i];
+      }, 175 * i);
+    })(i);
+  }
+}
+
 function printHtmlCode(item: number): void {
   const { exerciseView } = CSS_TRAINING_DATA.tasks[item - 1];
   const code = document.querySelector('.editor-html_content');
@@ -28,4 +45,4 @@ function showHtmlCode(item: number): void {
 
 // function chooseLevel(): void {}
 
-export { checkAnswer, printHtmlCode, showHtmlCode };
+export { checkAnswer, printHtmlCode, showHtmlCode, getAnswer, printAnswer };
