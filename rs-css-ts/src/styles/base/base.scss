@@ -66,7 +66,7 @@ content {
   color: $secondary-black;
 }
 
-/*  game  */
+/*  gameBlock  */
 .content_game-block{
   display: inline-block;
   width: 100%;
@@ -103,6 +103,17 @@ content {
   font-weight: bold;
   font-style: italic;
   text-shadow: 2px 4px 3px rgba(255, 255, 255, 0.89);
+}
+
+#help {
+  position: absolute;
+  right: 1em;
+  top: 2em;
+}
+#hint {
+  position: absolute;
+  right: 7em;
+  top: 2em;
 }
 
 @media screen and (max-width: 1280px) {
