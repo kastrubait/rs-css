@@ -8,8 +8,19 @@ interface Itasks {
   answer: string;
 }
 
-export default interface ITrainingData {
+export interface IitemLevel {
+  item: number;
+  completed: boolean;
+  help: boolean;
+}
+
+export interface ITrainingData {
   theme: string;
   hint: string;
   tasks: Itasks[];
+}
+
+export interface IStateGame {
+  state: IitemLevel[];
+  currLevel: number;
 }

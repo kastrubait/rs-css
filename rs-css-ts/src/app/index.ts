@@ -1,9 +1,41 @@
-import { init } from './init';
+import { IStateGame, IitemLevel } from './modeles';
+import { CSS_TRAINING_DATA } from './data-css';
+import { initPage } from './init';
 import { checkAnswer, printHtmlCode, showHtmlCode } from './utils';
 
-let isVisibele = false;
+class SimulatorCss {
+  public position: IStateGame;
 
-init();
+  public constructor(position: IStateGame) {
+    this.position = position;
+  }
+
+  getPosition(item: number) {
+    const { state } = this.position;
+    return state[item];
+  }
+}
+
+let newGame: IStateGame;
+if (localStorage.getItem('trainCss') !== null) {
+  newGame = JSON.parse(localStorage.getItem('trainCss'));
+} else {
+  const { tasks } = CSS_TRAINING_DATA;
+  const currLevel = 1;
+  const state: IitemLevel[] = [];
+  for (let i = 0; i < tasks.length; i += 1) {
+    state.push({ item: i + 1, completed: false, help: false });
+  }
+  newGame = {
+    state,
+    currLevel,
+  };
+  console.log(newGame);
+}
+
+const stateGame = new SimulatorCss(newGame);
+
+initPage(stateGame.position);
 
 window.addEventListener(
   'input',
@@ -24,20 +56,7 @@ Array.from(li).forEach(element =>
   }),
 );
 
-const toggleLevel = document.querySelector('.btn-level');
-const elList = document.querySelector('.level-block__list') as HTMLElement;
-const elGame = document.querySelector('.content_game-block') as HTMLElement;
-toggleLevel.addEventListener('click', function (): void {
-  // const { visible } = elList.dataset;
-  console.log(isVisibele);
-  if (!isVisibele) {
-    elList.style.width = '250px';
-    elGame.style.marginLeft = '250px';
-  }
-  // else {
-  //   elList.style.width = '0px';
-  //   elGame.style.marginLeft = '0px';
-  //   // console.log('-', elList);
-  // }
-  isVisibele = !isVisibele;
+const help = document.querySelector('#help');
+help.addEventListener('click', function (): void {
+  console.log(help);
 });
