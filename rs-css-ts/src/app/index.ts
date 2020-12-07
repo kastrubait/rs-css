@@ -1,7 +1,16 @@
-import { IStateGame, IitemLevel } from './modeles';
-import { CSS_TRAINING_DATA } from './data-css';
+import { IStateGame } from './modeles';
 import { initPage } from './init';
-import { checkAnswer, printHtmlCode, showHtmlCode, getAnswer, printAnswer } from './utils';
+import {
+  checkAnswer,
+  printHtmlCode,
+  showHtmlCode,
+  getAnswer,
+  printAnswer,
+  removeAllClassActive,
+  initParamTrain,
+  removeAllClass,
+  clearFieldInput,
+} from './utils';
 
 class SimulatorCss {
   public position: IStateGame;
@@ -14,26 +23,19 @@ class SimulatorCss {
     const { state } = this.position;
     return state[item];
   }
+
+  setCurrentLevel(item: number) {
+    this.position.currLevel = item;
+  }
+
+  setCurrentState(newTrain: IStateGame) {
+    this.position.state = newTrain.state;
+  }
 }
 
-let newGame: IStateGame;
-if (localStorage.getItem('trainCss') !== null) {
-  newGame = JSON.parse(localStorage.getItem('trainCss'));
-} else {
-  const { tasks } = CSS_TRAINING_DATA;
-  const currLevel = 1;
-  const state: IitemLevel[] = [];
-  for (let i = 0; i < tasks.length; i += 1) {
-    state.push({ item: i + 1, completed: false, help: false });
-  }
-  newGame = {
-    state,
-    currLevel,
-  };
-}
+const newGame: IStateGame = initParamTrain();
 
 const stateGame = new SimulatorCss(newGame);
-const { currLevel } = stateGame.position;
 
 initPage(stateGame.position);
 
@@ -46,11 +48,13 @@ window.addEventListener(
   false,
 );
 
-const li = document.querySelectorAll('li');
-Array.from(li).forEach(element =>
+const itemLevel = document.querySelectorAll('li');
+Array.from(itemLevel).forEach(element =>
   element.addEventListener('click', function (): void {
-    const { item } = this.dataset;
+    removeAllClassActive();
     element.classList.add('level__item--active');
+    const { item } = this.dataset;
+    stateGame.setCurrentLevel(parseInt(item, 10));
     printHtmlCode(parseInt(item, 10));
     showHtmlCode(parseInt(item, 10));
   }),
@@ -58,6 +62,26 @@ Array.from(li).forEach(element =>
 
 const help = document.querySelector('#help');
 help.addEventListener('click', function (): void {
-  const correct = getAnswer(currLevel);
+  const correct = getAnswer(stateGame.position.currLevel);
   printAnswer(correct);
 });
+
+const reset = document.querySelector('#reset');
+reset.addEventListener('click', function (): void {
+  removeAllClass();
+  clearFieldInput();
+  localStorage.removeItem('trainCss');
+  const firstItem = document.querySelector('li');
+  firstItem.classList.add('level__item--active');
+  const newSession = initParamTrain();
+  printHtmlCode(newSession.currLevel);
+  showHtmlCode(newSession.currLevel);
+});
+
+const toggleLevel = document.querySelector('.level__btn') as HTMLElement;
+const elList = document.getElementById('levelList') as HTMLDivElement;
+toggleLevel.addEventListener('click', function (): void {
+  elList.classList.toggle('open');
+});
+
+// showLevelInTitle(currLevel);

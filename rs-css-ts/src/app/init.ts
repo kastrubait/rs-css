@@ -1,40 +1,59 @@
-import { btnLevel, contentLogo, contentFooter, itemLevel, editorHtml, editorCss } from './layout';
+import { btnLevel, contentFooter, itemLevel, editorHtml, editorCss, levelCounter } from './layout';
 import { CSS_TRAINING_DATA } from './data-css';
+import { IStateGame } from './modeles';
 
 // eslint-disable-next-line import/prefer-default-export
-export function init(): void {
+export function initPage(cuttentGame: IStateGame): void {
   const boxLevel = document.createElement('div');
   boxLevel.classList.add('content_level-block');
   boxLevel.innerHTML = btnLevel();
 
   const title = document.createElement('div');
-  // title.textContent = 'Тренажер css-селекторов';
-  // title.classList.add('title-level');
+  title.textContent = 'Тренажер css-селекторов';
+  title.classList.add('title-level');
   boxLevel.append(title);
 
   const navLevel = document.createElement('ul');
   navLevel.classList.add('level-block__list');
-  navLevel.setAttribute('data-visible', 'false');
+  navLevel.setAttribute('id', 'levelList');
   boxLevel.append(navLevel);
 
   const logo = document.createElement('div');
   logo.classList.add('header-content_logo');
-  logo.innerHTML = contentLogo();
+  // logo.innerHTML = contentLogo();
+
+  const counter = document.createElement('div');
+  counter.setAttribute('id', 'level-counter');
+  counter.innerHTML = levelCounter();
 
   const { tasks } = CSS_TRAINING_DATA;
+  const { state, currLevel } = cuttentGame;
   for (let i = 0; i < tasks.length; i += 1) {
     const item = document.createElement('li');
+    item.classList.add('level__item');
     const { notation } = tasks[i];
     item.innerHTML = itemLevel(i, notation);
     item.setAttribute('data-item', `${i + 1}`);
-    item.setAttribute('data-check', 'false');
-    item.classList.add('level__item');
+    const { completed, help } = state[i];
+    if (completed) {
+      item.classList.add('check');
+    }
+    if (help) {
+      item.classList.add('help');
+    }
+    if (currLevel - i - 1 === 0) {
+      item.classList.add('level__item--active');
+    }
     navLevel.append(item);
   }
+  const btnReset = document.createElement('button');
+  btnReset.setAttribute('id', `reset`);
+  btnReset.textContent = 'Начать заново';
+  navLevel.append(btnReset);
 
   const fieldGame = document.createElement('div');
   fieldGame.classList.add('content_game-block');
-  fieldGame.append(logo);
+  // fieldGame.append(counter);
 
   const btnHint = document.createElement('button');
   btnHint.setAttribute('id', `hint`);

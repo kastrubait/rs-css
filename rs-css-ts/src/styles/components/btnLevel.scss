@@ -22,11 +22,11 @@
 .level__btn {
   display: flex;
   align-items: center;
-  position: fixed;
-  top: 27px;
-  left: 20px;
-  width: 50px;
-  height: 50px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   z-index: 1;
 }
@@ -52,26 +52,35 @@
   top: 15px;
 }
 
-.content_box {
+.level-block__list {
   display: block;
-  position: fixed;
-  visibility: hidden;
-  top: 0;
-  left: 100%;
-  width: 300px;
-  height: calc(100vh - 350px);
-  margin: 0;
+  position: absolute;
+  top: 250;
+  left: 81px;
+  width: 240px;
+  height: calc(100vh - 150px);
   padding: 100px 0;
   list-style: none;
-  background-color: $bg-color;
-  box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+  background-color: $primary-grey;
+  box-shadow:  -20px 0 20px -20px $secondary-grey inset;
   transition-duration: .25s;
   overflow-y: auto;
+  scroll-behavior: smooth;
+  z-index: 10;
+}
+
+.open {
+  width: 240px;
+}
+
+.level-block__list::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .level__item {
   display: block;
-  padding: 12px 24px;
+  padding: 8px 16px;
   color: $primary-black;
   font-family: 'Roboto-Light';
   font-size: 20px;
@@ -84,4 +93,40 @@
 .level__item--active {
   color: $primary-pink;
   background-color: $bg-color;
+  box-shadow:  -20px 0 20px -20px $secondary-grey inset;
+
+}
+
+.level__item > span:nth-child(1) {
+  width: 8px;
+  text-align: center;
+  color: $primary-grey;
+  padding-right: 8px;
+}
+.level__item > span:nth-child(2) {
+  width: 24px;
+  padding-right: 8px;
+}
+
+.level__item--check > span:nth-child(1) {
+  color: green;
+}
+
+.level__item--help > span:nth-child(1) {
+  padding: 2px;
+  width: 35px;
+  border: 2px solid $primary-pink-fade;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+#reset {
+  margin-top: 50px;
+  margin-left: 30px;
+  box-shadow: 0px 0px 3px 1px $secondary-grey-fade;
+}
+
+#reset:hover {
+  box-shadow: 0px 0px 5px 2px $secondary-grey-fade inset;
+  background-color: $secondary-pink;
 }

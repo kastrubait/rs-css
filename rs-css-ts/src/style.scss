@@ -3,6 +3,7 @@
 @import '../src/styles/layout/footer.scss';
 @import '../src/styles/components/btnLevel.scss';
 @import '../src/styles/components/editors.scss';
+@import '../src/styles/base/animation.scss';
 
 
 @font-face {
@@ -24,47 +25,3 @@
   font-weight: normal;
   font-style: normal;
 }
-
-#root {
-	display: flex;
-	flex-direction: column;
-	min-height: calc(100vh -150px);
-}
-
-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  padding-right: 20px;
-  z-index: 1;
-}
-
-/*  LevelBlock   */
-.content_level-block {
-  display: inline-block;
-  width: 25%;
-  min-width: 350px;
-  height: 100%;
-  max-height: calc(100vh - 150px);
-  padding-left: 10px;
-  justify-content: center;
-  align-items: center;
-  background-color: $primary-grey;
-  color: $secondary-black;
-  box-shadow:  -20px 0 20px -20px $secondary-grey inset;
-}
-
-/*  editors  */
-.content_editor-block{
-  display: inline-block;
-  width: 25%;
-  min-width: 350px;
-  height: 100%;
-  max-height: calc(100vh - 150px);
-  padding-top: 30px;
-  border-left: 30px solid $primary-grey;
-  border-right: 30px solid $primary-grey;
-  background-color: $primary-grey;
-}
-

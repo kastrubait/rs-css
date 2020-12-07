@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { CSS_TRAINING_DATA } from './data-css';
+import { IStateGame, IitemLevel } from './modeles';
 
 function checkAnswer(item: number, value: string): boolean {
   const { answer } = CSS_TRAINING_DATA.tasks[item - 1];
@@ -25,9 +26,9 @@ function printAnswer(answer: string): void {
   const code = document.querySelector('#code') as HTMLInputElement;
   code.value = '';
   for (let i = 0; i < answer.length; i += 1) {
-    (function (i) {
+    (function (p) {
       setTimeout(function () {
-        code.value += answer[i];
+        code.value += answer[p];
       }, 175 * i);
     })(i);
   }
@@ -45,6 +46,57 @@ function showHtmlCode(item: number): void {
   const { exerciseView } = CSS_TRAINING_DATA.tasks[item - 1];
 }
 
-// function chooseLevel(): void {}
+function removeAllClassActive(): void {
+  const itemLevel = document.querySelectorAll('li');
+  Array.from(itemLevel).forEach(element => {
+    element.classList.remove('level__item--active');
+  });
+}
 
-export { checkAnswer, printHtmlCode, showHtmlCode, getAnswer, printAnswer, removeAllClassActive };
+function removeAllClass(): void {
+  const itemLevel = document.querySelectorAll('li');
+  Array.from(itemLevel).forEach(element => {
+    element.classList.remove('level__item--active');
+    element.classList.remove('level__item--check');
+    element.classList.remove('level__item--help');
+  });
+}
+
+function clearFieldInput(): void {
+  const input = document.querySelector('#code') as HTMLInputElement;
+  input.value = '';
+}
+
+function initParamTrain(): IStateGame {
+  let newTraine: IStateGame;
+  if (localStorage.getItem('trainCss') !== null) {
+    newTraine = JSON.parse(localStorage.getItem('trainCss'));
+  } else {
+    const { tasks } = CSS_TRAINING_DATA;
+    const currLevel = 3;
+    const state: IitemLevel[] = [];
+    for (let i = 0; i < tasks.length; i += 1) {
+      state.push({ item: i + 1, completed: false, help: false });
+    }
+    newTraine = {
+      state,
+      currLevel,
+    };
+  }
+  return newTraine;
+}
+
+// function chooseLevel(): void {}
+// function showLevelInTitle(n) {}
+
+export {
+  checkAnswer,
+  printHtmlCode,
+  showHtmlCode,
+  getAnswer,
+  printAnswer,
+  removeAllClassActive,
+  initParamTrain,
+  removeAllClass,
+  clearFieldInput,
+};
