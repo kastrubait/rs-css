@@ -48,7 +48,7 @@ export function editorCss(): string {
   </div>
   <div class="editor-css">
     <div class="line-numbers">1<br>2<br>3<br>4<br>5<br></div>
-    <input id="code" type="text" autocomplete="off"> <pre>{
+    <input id="code" class="blink-input" type="text" autocomplete="off"> <pre>{
   // some style
 }</pre>
     <button id="check" class="disabled">Проверить</button>

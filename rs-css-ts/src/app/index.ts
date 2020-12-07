@@ -39,6 +39,17 @@ const stateGame = new SimulatorCss(newGame);
 
 initPage(stateGame.position);
 
+const fieldInput = document.querySelector('#code') as HTMLDivElement;
+const btnCheck = document.querySelector('#check') as HTMLDivElement;
+fieldInput.addEventListener(
+  'input',
+  function (): void {
+    fieldInput.classList.remove('blink-input');
+    btnCheck.classList.remove('disabled');
+  },
+  false,
+);
+
 window.addEventListener(
   'input',
   function (e: Event): void {

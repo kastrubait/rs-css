@@ -66,8 +66,13 @@
   right: 1em;
   bottom: 1em;
   padding-top: 0.3em;
+  box-shadow: 0px 0px 3px 1px $secondary-grey-fade;
 }
 
+#check:hover {
+  box-shadow: 0px 0px 5px 2px $secondary-grey-fade inset;
+  background-color: $secondary-pink;
+}
 button {
   display: inline-block;
   padding: 0.4em 0.8em;
@@ -79,6 +84,10 @@ button {
   color: $bg-color;
   cursor: pointer;
   appearance: none;
+}
+
+button:focus {
+  outline: none;
 }
 
 pre {
