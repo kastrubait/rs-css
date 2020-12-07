@@ -1,5 +1,5 @@
 export function btnLevel(): string {
-  return `<div class="btn-level">
+  return `<div class="level__btn">
     <input id="level__toggle" type="checkbox" />
     <label class="level__btn" for="level__toggle">
       <span></span>
@@ -63,5 +63,18 @@ export function editorHtml(): string {
   <div class="editor-html">
     <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13</div>
     <div class="editor-html_content"></div>
+  </div>`;
+}
+
+export function levelCounter(): string {
+  return `<div id="level-counter">
+    <span class="arrow left">&#9664;</span>
+    <span id="level-indicator">
+      <span id="labelLevel" class="translate">Уровень</span>
+      <span class="current">24</span>
+      <span id="labelOf">из</span>
+      <span class="total">24</span>
+    </span>
+    <span class="arrow rigth disabled">&#9654;</span>
   </div>`;
 }
