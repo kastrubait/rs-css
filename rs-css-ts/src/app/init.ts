@@ -33,7 +33,7 @@ export function initPage(cuttentGame: IStateGame): void {
     item.classList.add('level__item');
     const { notation } = tasks[i];
     item.innerHTML = itemLevel(i, notation);
-    item.setAttribute('data-item', `${i + 1}`);
+    item.setAttribute('id', `l${i + 1}`);
     const { completed, help } = state[i];
     if (completed) {
       item.classList.add('check');
@@ -57,6 +57,7 @@ export function initPage(cuttentGame: IStateGame): void {
 
   const btnHint = document.createElement('button');
   btnHint.setAttribute('id', `hint`);
+  btnHint.classList.add('disabled');
   btnHint.textContent = 'Подсказка';
   const btnHelp = document.createElement('button');
   btnHelp.setAttribute('id', `help`);

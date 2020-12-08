@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 /* eslint-disable import/prefer-default-export */
 import { CSS_TRAINING_DATA } from './data-css';
 import { IStateGame, IitemLevel } from './modeles';
@@ -36,6 +37,19 @@ function printAnswer(answer: string): void {
   btnCheck.classList.remove('disabled');
 }
 
+function wrongAnswer(): void {
+  const editor = document.querySelector('.content_editor-block__css') as HTMLInputElement;
+  editor.classList.add('wrong-answer');
+  (function () {
+    setTimeout(function () {
+      editor.classList.remove('wrong-answer');
+    }, 175 * 5);
+  })();
+
+  const btnCheck = document.querySelector('#check');
+  btnCheck.classList.remove('disabled');
+}
+
 function printHtmlCode(item: number): void {
   const { exerciseView } = CSS_TRAINING_DATA.tasks[item - 1];
   const code = document.querySelector('.editor-html_content');
@@ -64,7 +78,10 @@ function removeAllClass(): void {
 
 function clearFieldInput(): void {
   const input = document.querySelector('#code') as HTMLInputElement;
+  const btnCheck = document.querySelector('#check') as HTMLDivElement;
   input.value = '';
+  input.classList.add('blink-input');
+  btnCheck.classList.add('disabled');
 }
 
 function initParamTrain(): IStateGame {
@@ -73,7 +90,7 @@ function initParamTrain(): IStateGame {
     newTraine = JSON.parse(localStorage.getItem('trainCss'));
   } else {
     const { tasks } = CSS_TRAINING_DATA;
-    const currLevel = 3;
+    const currLevel = 1;
     const state: IitemLevel[] = [];
     for (let i = 0; i < tasks.length; i += 1) {
       state.push({ item: i + 1, completed: false, help: false });
@@ -86,7 +103,6 @@ function initParamTrain(): IStateGame {
   return newTraine;
 }
 
-// function chooseLevel(): void {}
 // function showLevelInTitle(n) {}
 
 export {
@@ -99,4 +115,5 @@ export {
   initParamTrain,
   removeAllClass,
   clearFieldInput,
+  wrongAnswer,
 };
